@@ -1,26 +1,19 @@
 import React from 'react';
-import { Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import { useAuth } from '../context/AuthContext';
 
-const SettingsScreen = () => {
+export default function SettingsScreen() {
+  const { logout } = useAuth();
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Acesta este Settings Screen</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text style={styles.title}>Settings</Text>
+      <Button title="Logout" onPress={logout} />
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f8f8f8',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
-  },
+  container: { flex: 1, justifyContent: 'center', padding: 20 },
+  title: { fontSize: 24, textAlign: 'center', marginBottom: 20 },
 });
-
-export default SettingsScreen;
